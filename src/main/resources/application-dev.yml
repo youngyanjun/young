@@ -1,17 +1,48 @@
 server:
   port: 8080
 spring:
+  #数据库配置
   datasource:
     username: root
-    password: root
+    password:
     url: jdbc:mysql://localhost:3306/young?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    #连接池类型
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
+    #druid数据源配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    filters: stat,wall
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: id_worker
+
+  #全局日期格式化
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
     default-property-inclusion: always
-
-
-
-
+#日志扫描包和日志输出级别
+logging:
+  level:
+    com:
+      yxzapp: debug
+rsa:
+  encrypt:
+    open: true # 是否开启加密 true  or  false
+    showLog: true # 是否打印加解密log true  or  false
+    publicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCLZRs4uSQTkqU7BhTCx9zcveNK82oqN1fUokV9KvTmsKQZHSFkg0LCnua/aXbWS/lCHm8bDyX+uQwhDS4Um4sjbaXNWU6KlKjdk5ZzWsXlZyVLrC9uImWDXfycjibREtb47An9uXqFTjzeenSxlXtxh6oA5/ap/Tj4shrbxYM3AQIDAQAB
+    privateKey: MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAItlGzi5JBOSpTsGFMLH3Ny940rzaio3V9SiRX0q9OawpBkdIWSDQsKe5r9pdtZL+UIebxsPJf65DCENLhSbiyNtpc1ZToqUqN2TlnNaxeVnJUusL24iZYNd/JyOJtES1vjsCf25eoVOPN56dLGVe3GHqgDn9qn9OPiyGtvFgzcBAgMBAAECgYBVQmks/6i+RALGIEkQfhhr98UPMeUsnx8ckog4L88NTtt/9N5Y0SRDT9fJGeOy3VM/CshgX5qYu2xcxuf5eM3X2nqAUed6mcmwW1Fb7xbSlEtTzqV6PORtktDYXCtYZYRj4PvrjCW9SW2Gx+GWNIa6Sr9dQuxrPey0pL6k6E1RlQJBAN4QC3AGZG1Hk1wq9idqXMrx0m0h4LO0rxgtll7KPCmp0wwUUMvOZa5jNwCKEeeWjIBwyzSQaMR3yZfth4pNtucCQQCgssdX8NZCBboMmCQwqf43KxmxVhV5RnKNaSCoGvhko+HEf9LGIdQ7RyXwDOFHqr9Teskapp9eRNLmBGt3KC3XAkBarCJ/c5y+ImPBVql8HqoVE/jgJt0hg72bGcI0ok8+k+FhJUp4baaHNmvXBImbDpYAPA49QFoHHwJpzstxZZoxAkAE1JrtZ83o+icXjdM4q0N7AQ6qp/3JQXbcDVbv9q+UxuBYeccqMYYhqgfX6Ws0LkvGBKDa7jtIKCV2yJc6Y7jNAkEAqd41jnZ5Q3dyCKfm9J6NDswo/S1zLCCGVRPFxkRan25Im05e5Ix8n5mjqoruvcoFidNDvcZPJG+92Y6deW3WBA==
