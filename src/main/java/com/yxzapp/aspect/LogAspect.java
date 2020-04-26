@@ -34,7 +34,7 @@ public class LogAspect {
     public Object saveLgoAroundAdvice(ProceedingJoinPoint pjp) {
         // 1.方法执行前的处理，相当于前置通知
         // 获取方法签名
-         MethodSignature methodSignature = (MethodSignature) pjp.getSignature();
+        MethodSignature methodSignature = (MethodSignature) pjp.getSignature();
         // 获取方法
         Method method = methodSignature.getMethod();
         // 获取方法上面的注解
