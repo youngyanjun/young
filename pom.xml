@@ -19,7 +19,7 @@
         <springfox.swagger.version>2.6.1</springfox.swagger.version>
         <mybatisplus.version>3.3.0</mybatisplus.version>
         <shiro-redis.version>3.1.0</shiro-redis.version>
-        <shiro.version>1.4.0</shiro.version>
+        <shiro.version>1.10.0</shiro.version>
     </properties>
 
     <dependencies>
